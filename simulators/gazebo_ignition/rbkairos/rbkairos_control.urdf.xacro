@@ -2,7 +2,16 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
   <xacro:macro
     name="rbkairos_gz_ignition_control"
-    params="namespace prefix">
+    params="namespace prefix controller_params_file:=''">
+    <!-- Controller types for gz_ros2_control. An empty controller_params_file
+         selects the Robotnik default; pass an absolute path to use another
+         controller set (for example upstream ros2_controllers). -->
+    <xacro:property
+      name="default_controller_params_file"
+      value="$(find robotnik_description)/simulators/gazebo_ignition/rbkairos/rbkairos_controller_params.yaml" />
+    <xacro:property
+      name="resolved_controller_params_file"
+      value="${controller_params_file if controller_params_file != '' else default_controller_params_file}" />
     <gazebo>
       <plugin name="gz::sim::systems::PosePublisher" filename="libgz-sim-pose-publisher-system.so">
         <publish_model_pose>true</publish_model_pose>
@@ -13,7 +22,7 @@
         filename="gz_ros2_control-system">
         <robot_param>robot_description</robot_param>
         <robot_param_node>robot_state_publisher</robot_param_node>
-        <parameters>$(find robotnik_description)/simulators/gazebo_ignition/rbkairos/rbkairos_controller_params.yaml</parameters>
+        <parameters>${resolved_controller_params_file}</parameters>
         <ros>
           <namespace>/${namespace}</namespace>
         </ros>
