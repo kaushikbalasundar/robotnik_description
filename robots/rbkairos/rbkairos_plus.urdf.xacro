@@ -20,6 +20,9 @@
     name="gazebo_ignition"
     default="false" />
   <xacro:arg
+    name="controller_params_file"
+    default="" />
+  <xacro:arg
     name="ur_type"
     default="ur10e" />
 
@@ -27,7 +30,8 @@
   <xacro:rbkairos
     prefix="$(arg prefix)"
     gazebo_ignition="$(arg gazebo_ignition)"
-    namespace="$(arg namespace)" />
+    namespace="$(arg namespace)"
+    controller_params_file="$(arg controller_params_file)" />
 
   <!-- ARMS -->
   <xacro:arm_ur

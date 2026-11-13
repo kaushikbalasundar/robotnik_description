@@ -102,6 +102,15 @@ def generate_launch_description():
     add_to_launcher.add_arg(arg)
 
     arg = ExtendedArgument(
+        name='controller_params_file',
+        description='Controller types YAML for gz_ros2_control (empty: robot default)',
+        default_value='',
+        use_env=True,
+        environment='CONTROLLER_PARAMS_FILE',
+    )
+    add_to_launcher.add_arg(arg)
+
+    arg = ExtendedArgument(
         name='arm_type',
         description='Type of robotic arm used by robot xacro',
         default_value='ur10e',
@@ -121,7 +130,8 @@ def generate_launch_description():
             " prefix:=",params["frame_prefix"],
             " gazebo_ignition:=",params["gazebo_ignition"],
             " ur_type:=",params["arm_type"],
-            " low_performance:=",params["low_performance_simulation"]
+            " low_performance:=",params["low_performance_simulation"],
+            " controller_params_file:=",params["controller_params_file"]
         ]
     )
     robot_description_param = ParameterValue(robot_description_content, value_type=str)

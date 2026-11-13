@@ -17,12 +17,16 @@
   <xacro:arg
     name="gazebo_ignition"
     default="false" />
+  <xacro:arg
+    name="controller_params_file"
+    default="" />
 
   <!-- RB-KAIROS -->
   <xacro:rbkairos
     prefix="$(arg prefix)"
     gazebo_ignition="$(arg gazebo_ignition)"
-    namespace="$(arg namespace)" />
+    namespace="$(arg namespace)"
+    controller_params_file="$(arg controller_params_file)" />
 
   <!-- IMU -->
   <xacro:sensor_vectornav

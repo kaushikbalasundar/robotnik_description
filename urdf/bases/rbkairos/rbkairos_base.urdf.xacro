@@ -26,6 +26,7 @@
       prefix:=robot_
       gazebo_ignition:=false
       namespace:=''
+      controller_params_file:=''
       ">
     <xacro:property
       name="hq"
@@ -65,7 +66,8 @@
     <xacro:if value="$(arg gazebo_ignition)">
       <xacro:rbkairos_gz_ignition_control
         namespace="${namespace}"
-        prefix="${prefix}" />
+        prefix="${prefix}"
+        controller_params_file="${controller_params_file}" />
     </xacro:if>
   </xacro:macro>
 </robot>
