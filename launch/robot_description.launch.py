@@ -102,6 +102,24 @@ def generate_launch_description():
     add_to_launcher.add_arg(arg)
 
     arg = ExtendedArgument(
+        name='use_gpu_lidar',
+        description='Use GPU lidar sensor plugin in Gazebo (set false for CpuLidar)',
+        default_value='true',
+        use_env=True,
+        environment='USE_GPU_LIDAR',
+    )
+    add_to_launcher.add_arg(arg)
+
+    arg = ExtendedArgument(
+        name='enable_camera',
+        description='Enable camera sensor plugins in Gazebo simulation',
+        default_value='true',
+        use_env=True,
+        environment='ENABLE_CAMERA',
+    )
+    add_to_launcher.add_arg(arg)
+
+    arg = ExtendedArgument(
         name='controller_params_file',
         description='Controller types YAML for gz_ros2_control (empty: robot default)',
         default_value='',
@@ -131,6 +149,8 @@ def generate_launch_description():
             " gazebo_ignition:=",params["gazebo_ignition"],
             " ur_type:=",params["arm_type"],
             " low_performance:=",params["low_performance_simulation"],
+            " use_gpu_lidar:=",params["use_gpu_lidar"],
+            " enable_camera:=",params["enable_camera"],
             " controller_params_file:=",params["controller_params_file"]
         ]
     )
