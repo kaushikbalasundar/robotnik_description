@@ -59,13 +59,31 @@
           <color rgba="0.0 0.0 0.0 1" />
         </material>
       </visual>
-      <collision>
+      <!-- Lower skirt below corner S300 scan plane (z in [-0.065, 0.135]) -->
+      <collision name="chassis_lower">
         <origin
-          xyz="0 0 0"
-          rpy="0 0 0 " />
+          xyz="0 0 0.035"
+          rpy="0 0 0" />
         <geometry>
-          <mesh
-            filename="package://robotnik_description/meshes/bases/rbkairos/rbkairos_chassis.stl" />
+          <box size="0.760 0.668 0.200" />
+        </geometry>
+      </collision>
+      <!-- Center core at S300 scan plane (z in [0.131, 0.231]), recessed inside (+-0.2865, -+0.2089) lasers -->
+      <collision name="chassis_mid_core">
+        <origin
+          xyz="0 0 0.181"
+          rpy="0 0 0" />
+        <geometry>
+          <box size="0.480 0.320 0.100" />
+        </geometry>
+      </collision>
+      <!-- Upper body above corner S300 scan plane (z in [0.232, 0.562]) -->
+      <collision name="chassis_upper">
+        <origin
+          xyz="0 0 0.397"
+          rpy="0 0 0" />
+        <geometry>
+          <box size="0.760 0.668 0.330" />
         </geometry>
       </collision>
     </link>

@@ -143,6 +143,14 @@ The launch files in this package run the `robot_state_publisher` node, publishin
 
   Boolean to set low performance mode for simulation.
 
+- **use_gpu_lidar** (boolean, default: `True`)
+
+  Forwarded to xacro as `use_gpu_lidar` to select `gpu_lidar` (`True`) or physics-backed `lidar` (`False`) in Gazebo.
+
+- **enable_camera** (boolean, default: `True`)
+
+  Forwarded to xacro as `enable_camera` to enable or disable simulated camera sensor plugins while preserving camera links and TF frames.
+
 - **arm_type** (string, default: `ur10e`)
 
   Arm type forwarded to xacro as `ur_type` for mobile manipulator variants.
